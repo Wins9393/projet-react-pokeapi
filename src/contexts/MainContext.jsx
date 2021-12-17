@@ -6,6 +6,7 @@ const Provider = ({ children }) => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
   const [pokeapi, setPokeapi] = useState();
+  const [filtered, setFiltered] = useState(pokeapi);
 
   const fetchPokeapi = async () => {
     try {
@@ -22,6 +23,19 @@ const Provider = ({ children }) => {
     }
   };
 
+  const handleFilter = (event) => {
+    event.preventDefault();
+
+    const inputValue = event.target[0].value;
+    const pokemons = pokeapi;
+
+    const searched = pokeapi.filter((pokemon) =>
+      pokemon.name.toLowerCase().includes(inputValue.toLowerCase())
+    );
+
+    setFiltered(searched);
+  };
+
   useEffect(() => {
     fetchPokeapi();
   }, []);
@@ -33,10 +47,11 @@ const Provider = ({ children }) => {
   if (loading) {
     return <div>Loading...</div>;
   }
-  // console.log(pokeapi);
+  console.log(pokeapi);
+  console.log(filtered);
 
   return (
-    <MainContext.Provider value={{ pokeapi, fetchPokeapi }}>
+    <MainContext.Provider value={{ pokeapi, handleFilter, filtered }}>
       {children}
     </MainContext.Provider>
   );

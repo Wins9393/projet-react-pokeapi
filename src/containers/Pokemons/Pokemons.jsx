@@ -1,17 +1,16 @@
 import { useContext } from "react";
-import { PokemonList } from "../../components";
-import MainContext from "../../contexts/MainContext";
+import { PokemonList, Filter } from "../../components";
+import MainContext from "../../contexts/";
 
 const Pokemons = () => {
-  const { pokeapi } = useContext(MainContext);
-  console.log(pokeapi);
+  const { filtered, handleFilter } = useContext(MainContext);
 
   return (
     <>
       <h2>Filtre à venir</h2>
-      <br />
+      <Filter handleFilter={handleFilter} />
       <h1>Tous les Pokémons</h1>
-      <PokemonList pokemonList={pokeapi}></PokemonList>
+      <PokemonList pokemonList={filtered}></PokemonList>
     </>
   );
 };

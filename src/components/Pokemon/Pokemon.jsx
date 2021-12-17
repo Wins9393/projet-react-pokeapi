@@ -7,10 +7,9 @@ const Pokemon = ({ id, name, url }) => {
     <div>
       <img
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
-        alt={`Image du Pokémon avec l'id:${id}`}
+        alt={`Pokémon avec l'id:${id}`}
       />
       <h3>{name}</h3>
-      <p>{url}</p>
     </div>
     // </Link>
   );

@@ -9,7 +9,6 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Pokemons />
         <Routes>
           <Route path="/" element={<Pokemons />} />
           {/* <Route path="/pokemon" element={<About />} /> */}
