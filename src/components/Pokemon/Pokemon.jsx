@@ -1,13 +1,19 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./Pokemon.css";
 
-const Pokemon = ({ ...pokemon }) => (
-  // <Link to={`/pokemon/${id}`}>
-  <div>
-    <h3>{pokemon.name}</h3>
-    <p>{pokemon.url}</p>
-  </div>
-  // </Link>
-);
+const Pokemon = ({ id, name, url }) => {
+  return (
+    // <Link to={`/pokemon/${id}`}>
+    <div>
+      <img
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
+        alt={`Image du Pokémon avec l'id:${id}`}
+      />
+      <h3>{name}</h3>
+      <p>{url}</p>
+    </div>
+    // </Link>
+  );
+};
 
 export default Pokemon;

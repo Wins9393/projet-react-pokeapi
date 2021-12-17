@@ -7,10 +7,11 @@ const PokemonList = ({ pokemonList = [] }) => {
 
   return (
     <div>
-      {pokemonList.map(({ ...pokemon }, index) => {
-        console.log(pokemon);
+      {pokemonList.map(({ ...pokemon }) => {
+        const urlId = pokemon.url.split("/");
+        const id = urlId[6];
 
-        return <Pokemon key={pokemon.url} {...pokemon}></Pokemon>;
+        return <Pokemon key={id} id={id} {...pokemon}></Pokemon>;
       })}
     </div>
   );
