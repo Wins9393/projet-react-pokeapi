@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useMatch, Link } from "react-router-dom";
 
 const MainContext = createContext({});
 
@@ -9,10 +9,15 @@ const Provider = ({ children }) => {
   const [pokeapi, setPokeapi] = useState();
   const [filtered, setFiltered] = useState(pokeapi);
   const [inputSearched, setInputSearched] = useState();
-  let { slug } = useParams();
-  // let match = useMatch("/pokemon/:slug");
+  // let { slug } = useParams();
+  let match = useMatch("/filter/:slug");
 
-  // console.log(match);
+  // console.log(match.params.slug);
+  // console.log(filtered);
+
+  useEffect(() => {
+    fetchPokeapi();
+  }, []);
 
   const fetchPokeapi = async () => {
     try {
@@ -24,6 +29,7 @@ const Provider = ({ children }) => {
       setLoading(false);
       setPokeapi(data.results);
       setFiltered(data.results);
+      matchParamsWithInput();
     } catch (err) {
       setError(true);
       throw err;
@@ -34,20 +40,30 @@ const Provider = ({ children }) => {
     event.preventDefault();
 
     const inputValue = event.target[0].value;
-    const pokemons = pokeapi;
+    // const pokemons = pokeapi;
 
-    const searched = pokemons.filter((pokemon) =>
+    const searched = pokeapi.filter((pokemon) =>
       pokemon.name.toLowerCase().includes(inputValue.toLowerCase())
     );
 
     setInputSearched(inputValue);
-    console.log(slug);
     setFiltered(searched);
   };
 
-  useEffect(() => {
-    fetchPokeapi();
-  }, []);
+  const matchParamsWithInput = async () => {
+    if (match) {
+      console.log(pokeapi);
+
+      const matchFilter = await pokeapi.filter((pokemon) =>
+        pokemon.name
+          .toLowerCase()
+          .includes(match.params.slug.toLocaleLowerCase())
+      );
+
+      setFiltered(matchFilter);
+      console.log(matchFilter);
+    }
+  };
 
   if (error) {
     return <div>Sorry, there is an error</div>;
@@ -61,7 +77,12 @@ const Provider = ({ children }) => {
 
   return (
     <MainContext.Provider
-      value={{ pokeapi, handleFilter, filtered, inputSearched }}
+      value={{
+        pokeapi,
+        handleFilter,
+        filtered,
+        inputSearched,
+      }}
     >
       {children}
     </MainContext.Provider>
