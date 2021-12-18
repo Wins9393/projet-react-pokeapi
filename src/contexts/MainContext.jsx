@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 const MainContext = createContext({});
 
@@ -7,6 +8,11 @@ const Provider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [pokeapi, setPokeapi] = useState();
   const [filtered, setFiltered] = useState(pokeapi);
+  const [inputSearched, setInputSearched] = useState();
+  let { slug } = useParams();
+  // let match = useMatch("/pokemon/:slug");
+
+  // console.log(match);
 
   const fetchPokeapi = async () => {
     try {
@@ -17,6 +23,7 @@ const Provider = ({ children }) => {
 
       setLoading(false);
       setPokeapi(data.results);
+      setFiltered(data.results);
     } catch (err) {
       setError(true);
       throw err;
@@ -29,10 +36,12 @@ const Provider = ({ children }) => {
     const inputValue = event.target[0].value;
     const pokemons = pokeapi;
 
-    const searched = pokeapi.filter((pokemon) =>
+    const searched = pokemons.filter((pokemon) =>
       pokemon.name.toLowerCase().includes(inputValue.toLowerCase())
     );
 
+    setInputSearched(inputValue);
+    console.log(slug);
     setFiltered(searched);
   };
 
@@ -41,7 +50,7 @@ const Provider = ({ children }) => {
   }, []);
 
   if (error) {
-    return <div>ERROR</div>;
+    return <div>Sorry, there is an error</div>;
   }
 
   if (loading) {
@@ -51,7 +60,9 @@ const Provider = ({ children }) => {
   console.log(filtered);
 
   return (
-    <MainContext.Provider value={{ pokeapi, handleFilter, filtered }}>
+    <MainContext.Provider
+      value={{ pokeapi, handleFilter, filtered, inputSearched }}
+    >
       {children}
     </MainContext.Provider>
   );
