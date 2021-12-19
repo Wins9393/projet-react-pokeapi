@@ -1,19 +1,15 @@
 import { createContext, useState, useEffect } from "react";
-import { useParams, useMatch, Link } from "react-router-dom";
+import { useMatch } from "react-router-dom";
 
 const MainContext = createContext({});
 
 const Provider = ({ children }) => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [pokeapi, setPokeapi] = useState();
+  const [pokeapi, setPokeapi] = useState([]);
   const [filtered, setFiltered] = useState(pokeapi);
   const [inputSearched, setInputSearched] = useState();
-  // let { slug } = useParams();
   let match = useMatch("/filter/:slug");
-
-  // console.log(match.params.slug);
-  // console.log(filtered);
 
   useEffect(() => {
     fetchPokeapi();
@@ -29,7 +25,8 @@ const Provider = ({ children }) => {
       setLoading(false);
       setPokeapi(data.results);
       setFiltered(data.results);
-      matchParamsWithInput();
+      // Tentative de synchroniser l'url avec le input
+      // matchParamsWithInput();
     } catch (err) {
       setError(true);
       throw err;
@@ -40,7 +37,6 @@ const Provider = ({ children }) => {
     event.preventDefault();
 
     const inputValue = event.target[0].value;
-    // const pokemons = pokeapi;
 
     const searched = pokeapi.filter((pokemon) =>
       pokemon.name.toLowerCase().includes(inputValue.toLowerCase())
@@ -50,20 +46,22 @@ const Provider = ({ children }) => {
     setFiltered(searched);
   };
 
-  const matchParamsWithInput = async () => {
-    if (match) {
-      console.log(pokeapi);
+  // Tentative de synchroniser l'url avec le input
 
-      const matchFilter = await pokeapi.filter((pokemon) =>
-        pokemon.name
-          .toLowerCase()
-          .includes(match.params.slug.toLocaleLowerCase())
-      );
+  // const matchParamsWithInput = () => {
+  //   if (match) {
+  //     console.log(pokeapi);
 
-      setFiltered(matchFilter);
-      console.log(matchFilter);
-    }
-  };
+  //     const matchFilter = pokeapi.filter((pokemon) =>
+  //       pokemon.name
+  //         .toLowerCase()
+  //         .includes(match.params.slug.toLocaleLowerCase())
+  //     );
+
+  //     setFiltered(matchFilter);
+  //     console.log(matchFilter);
+  //   }
+  // };
 
   if (error) {
     return <div>Sorry, there is an error</div>;
@@ -82,6 +80,7 @@ const Provider = ({ children }) => {
         handleFilter,
         filtered,
         inputSearched,
+        match,
       }}
     >
       {children}

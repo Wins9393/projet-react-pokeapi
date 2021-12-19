@@ -7,7 +7,10 @@ const { Search } = Input;
 // const onSearch = (value) => console.log(value);
 
 const Filter = ({ handleFilter, inputSearched }) => {
-  console.log(inputSearched);
+  const { match } = useContext(MainContext);
+  if (match) {
+    console.log(match.params.slug);
+  }
   return (
     <>
       <form onSubmit={handleFilter}>

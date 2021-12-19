@@ -4,7 +4,6 @@ import MainContext from "../../contexts/";
 
 const Pokemons = () => {
   const { filtered, handleFilter, inputSearched } = useContext(MainContext);
-
   return (
     <>
       <h2>Cherchez un pokémon par nom</h2>
