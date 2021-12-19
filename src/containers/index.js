@@ -1,3 +1,4 @@
 import Pokemons from './Pokemons'
+import Pokemon from './Pokemon'
 
-export {Pokemons}
+export {Pokemons, Pokemon}

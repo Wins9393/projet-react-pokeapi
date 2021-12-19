@@ -1,6 +1,6 @@
 import "./App.css";
 import { Header } from "./components/";
-import { Pokemons } from "./containers/";
+import { Pokemons, Pokemon } from "./containers/";
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 // import { useContext } from "react/cjs/react.development";
@@ -15,7 +15,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Pokemons />} />
         <Route path="/filter/:slug" element={<Pokemons />} />
-        {/* <Link to={`/pokemon/${slug}`}></Link> */}
+        <Route path="/pokemon/:slug" element={<Pokemon />} />
       </Routes>
     </div>
   );
