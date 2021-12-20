@@ -1,3 +1,5 @@
+@import '~antd/dist/antd.css';
+
 .pokemonContainer, .container{
     display: flex !important;
     justify-content: center !important;

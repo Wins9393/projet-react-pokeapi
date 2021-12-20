@@ -7,7 +7,10 @@ const Provider = ({ children }) => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
   const [pokeapi, setPokeapi] = useState([]);
-  const [pokemonDetails, setPokemonDetails] = useState([]);
+  const [pokemonDetails, setPokemonDetails] = useState({
+    pokemon: [],
+    isFetching: false,
+  });
   const [filtered, setFiltered] = useState(pokeapi);
   const [inputSearched, setInputSearched] = useState();
   let match = useMatch("/filter/:slug");
@@ -34,13 +37,15 @@ const Provider = ({ children }) => {
     }
   };
 
-  const fetchPokemonDetails = async (name) => {
+  const fetchPokemonDetails = async (name, active) => {
     try {
+      setPokemonDetails({ pokemon: pokemonDetails.pokemon, isFetching: true });
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
       const data = await response.json();
-
-      setPokemonDetails(data);
-      console.log(pokemonDetails);
+      if (active) {
+        setPokemonDetails({ pokemon: data, isFetching: false });
+        console.log(pokemonDetails.pokemon);
+      }
     } catch (err) {
       throw err;
     }
@@ -87,8 +92,8 @@ const Provider = ({ children }) => {
   if (loading) {
     return <div>Loading...</div>;
   }
-  console.log(pokeapi);
-  console.log(filtered);
+  // console.log(pokeapi);
+  // console.log(filtered);
 
   return (
     <MainContext.Provider
