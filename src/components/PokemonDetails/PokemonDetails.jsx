@@ -3,7 +3,8 @@ import "./PokemonDetails.css";
 
 const PokemonDetails = ({ slug, pokemonDetails, capitalize }) => {
   console.log(pokemonDetails.pokemon);
-  if (pokemonDetails.pokemon.length > 0) {
+  const poke = pokemonDetails.pokemon;
+  if (poke) {
     return (
       <>
         <div className="pokemonNameContainer">
@@ -13,11 +14,11 @@ const PokemonDetails = ({ slug, pokemonDetails, capitalize }) => {
                 <img src="./public/pokeball.png" />
                 <h1>
                   <Avatar
-                    src={pokemonDetails.sprites.front_default}
+                    src={poke.sprites.front_default}
                     alt={slug}
                     size={64}
                   />
-                  N° {pokemonDetails.id} {capitalize(pokemonDetails.name)}
+                  N° {poke.id} {capitalize(poke.name)}
                 </h1>
               </div>
             </div>
@@ -34,7 +35,7 @@ const PokemonDetails = ({ slug, pokemonDetails, capitalize }) => {
                 <div className="imgContainer">
                   <div className="imgWrapper">
                     <Avatar
-                      src={pokemonDetails.sprites.front_default}
+                      src={poke.sprites.front_default}
                       alt={slug}
                       size={250}
                     />
@@ -54,23 +55,23 @@ const PokemonDetails = ({ slug, pokemonDetails, capitalize }) => {
               </Col>
               <Col span={2}>
                 <div className="mb8">
-                  <p className={pokemonDetails.types[0].type.name}>
-                    {capitalize(pokemonDetails.types[0].type.name)}
+                  <p className={poke.types[0].type.name}>
+                    {capitalize(poke.types[0].type.name)}
                   </p>
                 </div>
                 <div className="mb8">
-                  <p>{pokemonDetails.height * 10} cm</p>
+                  <p>{poke.height * 10} cm</p>
                 </div>
                 <div className="mb8">
-                  <p>{pokemonDetails.weight / 10} kg</p>
+                  <p>{poke.weight / 10} kg</p>
                 </div>
               </Col>
 
               <Col span={8}>
                 <h3>Moves</h3>
-                <p>{capitalize(pokemonDetails.moves[0].move.name)}</p>
-                <p>{capitalize(pokemonDetails.moves[1].move.name)}</p>
-                <p>{capitalize(pokemonDetails.moves[2].move.name)}</p>
+                <p>{capitalize(poke.moves[0].move.name)}</p>
+                <p>{capitalize(poke.moves[1].move.name)}</p>
+                <p>{capitalize(poke.moves[2].move.name)}</p>
               </Col>
               <Divider className="divider">
                 <p>Statistics</p>
@@ -89,13 +90,13 @@ const PokemonDetails = ({ slug, pokemonDetails, capitalize }) => {
               </Col>
               <Col span={4}>
                 <div className="container">
-                  <p>{pokemonDetails.stats[0].base_stat}</p>
+                  <p>{poke.stats[0].base_stat}</p>
                 </div>
                 <div className="container">
-                  <p>{pokemonDetails.stats[1].base_stat}</p>
+                  <p>{poke.stats[1].base_stat}</p>
                 </div>
                 <div className="container">
-                  <p>{pokemonDetails.stats[2].base_stat}</p>
+                  <p>{poke.stats[2].base_stat}</p>
                 </div>
               </Col>
               <Col span={4}>
@@ -111,13 +112,13 @@ const PokemonDetails = ({ slug, pokemonDetails, capitalize }) => {
               </Col>
               <Col span={4}>
                 <div className="container">
-                  <p>{pokemonDetails.stats[3].base_stat}</p>
+                  <p>{poke.stats[3].base_stat}</p>
                 </div>
                 <div className="container">
-                  <p>{pokemonDetails.stats[4].base_stat}</p>
+                  <p>{poke.stats[4].base_stat}</p>
                 </div>
                 <div className="container">
-                  <p>{pokemonDetails.stats[5].base_stat}</p>
+                  <p>{poke.stats[5].base_stat}</p>
                 </div>
               </Col>
             </Row>
