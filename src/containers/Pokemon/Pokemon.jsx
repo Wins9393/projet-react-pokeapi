@@ -6,7 +6,8 @@ import { useEffect } from "react/cjs/react.development";
 
 const Pokemon = () => {
   const { slug } = useParams();
-  const { fetchPokemonDetails, pokemonDetails } = useContext(MainContext);
+  const { fetchPokemonDetails, pokemonDetails, capitalize } =
+    useContext(MainContext);
 
   useEffect(() => {
     fetchPokemonDetails(slug);
@@ -14,7 +15,13 @@ const Pokemon = () => {
 
   console.log(pokemonDetails);
 
-  return <PokemonDetails slug={slug} pokemonDetails={pokemonDetails} />;
+  return (
+    <PokemonDetails
+      slug={slug}
+      pokemonDetails={pokemonDetails}
+      capitalize={capitalize}
+    />
+  );
 };
 
 export default Pokemon;

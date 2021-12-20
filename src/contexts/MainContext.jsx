@@ -59,6 +59,10 @@ const Provider = ({ children }) => {
     setFiltered(searched);
   };
 
+  const capitalize = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
   // Tentative de synchroniser l'url avec le input
 
   // const matchParamsWithInput = () => {
@@ -89,6 +93,7 @@ const Provider = ({ children }) => {
   return (
     <MainContext.Provider
       value={{
+        capitalize,
         pokeapi,
         pokemonDetails,
         handleFilter,
