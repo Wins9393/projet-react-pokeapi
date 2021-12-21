@@ -64,6 +64,13 @@ const Provider = ({ children }) => {
     setFiltered(searched);
   };
 
+  const onSearch = (value) => {
+    const searched = pokeapi.filter((pokemon) =>
+      pokemon.name.toLowerCase().includes(value)
+    );
+    setFiltered(searched);
+  };
+
   const capitalize = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
@@ -106,6 +113,7 @@ const Provider = ({ children }) => {
         filtered,
         inputSearched,
         match,
+        onSearch,
       }}
     >
       {children}

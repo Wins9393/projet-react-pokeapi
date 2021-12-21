@@ -4,10 +4,10 @@ import { useContext } from "react";
 
 const { Search } = Input;
 
-// const onSearch = (value) => console.log(value);
-
-const Filter = ({ handleFilter, inputSearched }) => {
+const Filter = ({ handleFilter }) => {
   const { match } = useContext(MainContext);
+  const { onSearch } = useContext(MainContext);
+
   if (match) {
     console.log(match.params.slug);
   }
@@ -17,11 +17,11 @@ const Filter = ({ handleFilter, inputSearched }) => {
         <Search
           placeholder="input search text"
           style={{ width: 300, height: 40 }}
-          // onSearch={onSearch}
+          onSearch={onSearch}
           enterButton
         />
       </form>
-      <p>{inputSearched}</p>
+      {/* <p>{inputSearched}</p> */}
     </>
   );
 };
