@@ -5,8 +5,7 @@ import { useContext } from "react";
 const { Search } = Input;
 
 const Filter = ({ handleFilter }) => {
-  const { match } = useContext(MainContext);
-  const { onSearch } = useContext(MainContext);
+  const { match, onSearch } = useContext(MainContext);
 
   if (match) {
     console.log(match.params.slug);

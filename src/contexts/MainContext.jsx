@@ -11,13 +11,16 @@ const Provider = ({ children }) => {
     pokemon: [],
     isFetching: false,
   });
-  const [filtered, setFiltered] = useState(pokeapi);
+  const [filtered, setFiltered] = useState([]);
+  const [filteredByType, setFilteredByType] = useState([]);
   const [inputSearched, setInputSearched] = useState();
   let match = useMatch("/filter/:slug");
 
   useEffect(() => {
     fetchPokeapi();
   }, []);
+
+  console.log(pokeapi);
 
   const fetchPokeapi = async () => {
     try {
@@ -71,6 +74,27 @@ const Provider = ({ children }) => {
     setFiltered(searched);
   };
 
+  const handleFilterByType = async (type) => {
+    if (!type) {
+      setFilteredByType({ type: null });
+      return;
+    }
+    try {
+      const response = await fetch(`https://pokeapi.co/api/v2/type/${type}`);
+      const data = await response.json();
+
+      setFilteredByType(data.pokemon);
+      // const tmp = [];
+
+      // filteredByType.map((object) => tmp.push(object.pokemon));
+      // setFilteredByType(tmp);
+    } catch (err) {
+      throw err;
+    }
+
+    console.log(filteredByType);
+  };
+
   const capitalize = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
@@ -101,6 +125,7 @@ const Provider = ({ children }) => {
   }
   // console.log(pokeapi);
   // console.log(filtered);
+  console.log(filteredByType);
 
   return (
     <MainContext.Provider
@@ -109,8 +134,10 @@ const Provider = ({ children }) => {
         pokeapi,
         pokemonDetails,
         handleFilter,
+        handleFilterByType,
         fetchPokemonDetails,
         filtered,
+        filteredByType,
         inputSearched,
         match,
         onSearch,

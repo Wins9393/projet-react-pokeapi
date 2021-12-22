@@ -8,6 +8,9 @@ const Header = () => (
         <li>
           <Link to="/">All Pokemon</Link>
         </li>
+        <li>
+          <Link to="/type">By Type</Link>
+        </li>
       </ul>
     </nav>
   </header>

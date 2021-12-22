@@ -2,8 +2,8 @@ import { Avatar, Row, Col, Divider } from "antd";
 import "./PokemonDetails.css";
 
 const PokemonDetails = ({ slug, pokemonDetails, capitalize }) => {
-  console.log(pokemonDetails.pokemon);
   const poke = pokemonDetails.pokemon;
+
   if (poke.length < 1) {
     return <div>Error !</div>;
   } else {
@@ -15,6 +15,7 @@ const PokemonDetails = ({ slug, pokemonDetails, capitalize }) => {
               <div className="pokemonNameWrapper">
                 <img
                   src="https://cutewallpaper.org/24/pokeball-png/pokemon-pokeball-png-photo-png-all.png"
+                  alt="pokeball"
                   width={48}
                   height={48}
                 />
