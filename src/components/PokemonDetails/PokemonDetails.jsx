@@ -76,7 +76,7 @@ const PokemonDetails = ({
                   </div>
                 </div>
               </Col>
-              <Col className="container typeHeightWeightColumn" span={4}>
+              <Col span={4} className="container typeHeightWeightColumn">
                 <div className="container containerColor">
                   <h3 className="subTitleWhite">Type</h3>
                 </div>
@@ -129,7 +129,7 @@ const PokemonDetails = ({
                 <p>Statistics</p>
               </Divider>
 
-              <Col span={4}>
+              <Col span={4} className="stats">
                 <div className="container">
                   <h3 className="subTitle">HP:</h3>
                 </div>
@@ -140,7 +140,7 @@ const PokemonDetails = ({
                   <h3 className="subTitle">Defense:</h3>
                 </div>
               </Col>
-              <Col span={4}>
+              <Col span={4} className="stats">
                 <div className="container">
                   <p>{poke.stats[0].base_stat}</p>
                 </div>
@@ -151,7 +151,7 @@ const PokemonDetails = ({
                   <p>{poke.stats[2].base_stat}</p>
                 </div>
               </Col>
-              <Col span={4}>
+              <Col span={4} className="stats">
                 <div className="container">
                   <h3 className="subTitle">Special Attack:</h3>
                 </div>
@@ -162,7 +162,7 @@ const PokemonDetails = ({
                   <h3 className="subTitle">Speed:</h3>
                 </div>
               </Col>
-              <Col span={4}>
+              <Col span={4} className="stats">
                 <div className="container">
                   <p>{poke.stats[3].base_stat}</p>
                 </div>

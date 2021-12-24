@@ -149,6 +149,15 @@ h3{
     justify-content: start;
 }
 
+.stats{
+    height: 16vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 32px;
+    margin-bottom: 40px;
+}
+
 .type{
     width: 50%;
     min-width: 72px;
