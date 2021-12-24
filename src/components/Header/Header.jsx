@@ -1,19 +1,21 @@
 import { Link } from "react-router-dom";
+import { Menu } from "antd";
 import "./Header.css";
 
-const Header = () => (
-  <header className="App__Header">
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">All Pokemon</Link>
-        </li>
-        <li>
-          <Link to="/type">By Type</Link>
-        </li>
-      </ul>
-    </nav>
-  </header>
-);
+const Header = () => {
+  return (
+    <Menu mode="horizontal">
+      <Menu.Item key="all pokemon">
+        <Link to="/">All Pokemon</Link>
+      </Menu.Item>
+      <Menu.Item key="by type">
+        <Link to="/type">By Type</Link>
+      </Menu.Item>
+      <Menu.Item key="favorites">
+        <Link to="/favorites">Favorites</Link>
+      </Menu.Item>
+    </Menu>
+  );
+};
 
 export default Header;

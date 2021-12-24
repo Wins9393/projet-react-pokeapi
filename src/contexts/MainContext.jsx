@@ -14,13 +14,17 @@ const Provider = ({ children }) => {
   const [filtered, setFiltered] = useState([]);
   const [filteredByType, setFilteredByType] = useState([]);
   const [inputSearched, setInputSearched] = useState();
+  const [isFavorite, setIsFavorite] = useState();
+
+  // const [favorites, setFavorites] = useState({ ...localStorage })
+
   let match = useMatch("/filter/:slug");
 
   useEffect(() => {
     fetchPokeapi();
   }, []);
 
-  console.log(pokeapi);
+  // console.log(pokeapi);
 
   const fetchPokeapi = async () => {
     try {
@@ -95,6 +99,24 @@ const Provider = ({ children }) => {
     console.log(filteredByType);
   };
 
+  const addToFavorites = (poke) => {
+    if (localStorage.getItem(poke.name)) {
+      localStorage.removeItem(poke.name);
+      setIsFavorite(false);
+    } else {
+      localStorage.setItem(poke.name, poke.sprites.front_default);
+      setIsFavorite(true);
+    }
+  };
+
+  // const toggleFavorite = (storage) => {
+  //   if (localStorage.getItem(poke.name)) {
+  //     setIsFavorite(true);
+  //   } else {
+  //     setIsFavorite(false);
+  //   }
+  // };
+
   const capitalize = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
@@ -125,12 +147,13 @@ const Provider = ({ children }) => {
   }
   // console.log(pokeapi);
   // console.log(filtered);
-  console.log(filteredByType);
+  // console.log(filteredByType);
 
   return (
     <MainContext.Provider
       value={{
         capitalize,
+        isFavorite,
         pokeapi,
         pokemonDetails,
         handleFilter,
@@ -141,6 +164,7 @@ const Provider = ({ children }) => {
         inputSearched,
         match,
         onSearch,
+        addToFavorites,
       }}
     >
       {children}

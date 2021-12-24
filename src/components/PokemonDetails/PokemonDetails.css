@@ -102,6 +102,12 @@ h3{
     font-weight: 400;
 }
 
+#star{
+    font-size: 34px;
+    color: #ffd32a;
+    cursor: pointer;
+    margin-right: 8px;
+}
 
 .divider{
     background-color: #f7d794;

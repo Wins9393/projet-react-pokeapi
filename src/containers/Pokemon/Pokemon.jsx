@@ -6,8 +6,13 @@ import { useEffect } from "react";
 
 const Pokemon = () => {
   const { slug } = useParams("");
-  const { fetchPokemonDetails, pokemonDetails, capitalize } =
-    useContext(MainContext);
+  const {
+    fetchPokemonDetails,
+    pokemonDetails,
+    addToFavorites,
+    isFavorite,
+    capitalize,
+  } = useContext(MainContext);
 
   console.log(slug);
 
@@ -26,6 +31,8 @@ const Pokemon = () => {
       slug={slug}
       pokemonDetails={pokemonDetails}
       capitalize={capitalize}
+      addToFavorites={addToFavorites}
+      isFavorite={isFavorite}
     />
   );
 };

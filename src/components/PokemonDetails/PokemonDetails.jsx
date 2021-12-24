@@ -1,8 +1,18 @@
-import { Avatar, Row, Col, Divider } from "antd";
+import { Avatar, Row, Col, Divider, Button } from "antd";
+import { StarFilled } from "@ant-design/icons";
 import "./PokemonDetails.css";
+// import { useState } from "react";
 
-const PokemonDetails = ({ slug, pokemonDetails, capitalize }) => {
+const PokemonDetails = ({
+  slug,
+  pokemonDetails,
+  capitalize,
+  addToFavorites,
+  isFavorite,
+}) => {
   const poke = pokemonDetails.pokemon;
+
+  console.log(poke);
 
   if (poke.length < 1) {
     return <div>Error !</div>;
@@ -27,7 +37,23 @@ const PokemonDetails = ({ slug, pokemonDetails, capitalize }) => {
                   />
                   N° {poke.id} {capitalize(poke.name)}
                 </h1>
-                <div id="space"></div>
+                <Button
+                  type="text"
+                  shape="circle"
+                  size="large"
+                  icon={<StarFilled id="star" />}
+                  onClick={() => addToFavorites(poke)}
+                />
+                {/* Test pour toggle l'étoile au click
+                    Mais le toggle changeait le state de tous les pokémons
+
+                  <div onClick={() => addToFavorites(poke)}>
+                  {isFavorite ? (
+                    <StarFilled id="star" />
+                  ) : (
+                    <StarOutlined id="star" />
+                  )}
+                </div> */}
               </div>
             </div>
           </div>
