@@ -1,6 +1,8 @@
 import { Avatar, Row, Col, Divider, Button } from "antd";
 import { StarFilled } from "@ant-design/icons";
 import "./PokemonDetails.css";
+import { ToastContainer } from "react-toastify";
+
 // import { useState } from "react";
 
 const PokemonDetails = ({
@@ -20,6 +22,7 @@ const PokemonDetails = ({
     return (
       <>
         <div className="pokemonNameContainer">
+          <ToastContainer position="top-center" />
           <div className="pokemonNameBorder">
             <div className="pokemonNameBorder2">
               <div className="pokemonNameWrapper">

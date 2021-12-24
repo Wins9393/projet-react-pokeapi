@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import { useMatch } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const MainContext = createContext({});
 
@@ -103,9 +105,11 @@ const Provider = ({ children }) => {
     if (localStorage.getItem(poke.name)) {
       localStorage.removeItem(poke.name);
       setIsFavorite(false);
+      toast.error(`${poke.name} has been removed from the favorites !`);
     } else {
       localStorage.setItem(poke.name, poke.sprites.front_default);
       setIsFavorite(true);
+      toast.success(`${poke.name} has been added to the favorites !`);
     }
   };
 
