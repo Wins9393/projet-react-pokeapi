@@ -8,9 +8,15 @@
 
 .containerColumn{
     flex-direction: column !important;
+    justify-content: space-evenly !important;
+    height: 32vh;
+
 }
 
 .containerMoves{
+    flex-direction: column !important;
+    justify-content: center !important;
+    height: 24vh;
     padding: 8px;
     background-color: #a8e4a0;
     border-radius: 10px;
@@ -89,12 +95,33 @@ h3{
     border: solid 6px #feca57;
     border-radius: 10px;
     box-shadow: 5px 5px 5px #ff6b6b;
+    height: 32vh;
 }
 
 .imgWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: solid 3px #0984e3;
     border-radius: 5px;
     background-color: #fffacd;
+    height: 100%;
+}
+
+.typeHeightWeightColumn{
+   flex-direction: column; 
+}
+
+.typeHeightWeightValueColumn{
+    flex-direction: column;
+    margin-left: -30px;
+    margin-right: 30px;
+}
+
+.twoTypes, .oneType{
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .subTitleWhite{
@@ -123,167 +150,84 @@ h3{
 }
 
 .type{
-    width: 60%;
-    margin-left: -20px !important;
+    width: 50%;
+    min-width: 72px;
+    margin: 5px !important;
     box-shadow: 2px 2px 3px #777;
+    color: white;
+    border: solid 3px white;
+    border-radius: 20px;
+    height: 40px;
 }
 
 .normal{
-    color: white;
     background-color: #ccc;
-    border: solid 2px white;
-    border-radius: 20px;
-    height: 40px;
 }
 
 .grass{
-    color: white;
     background-color: #2ed573;
-    border: solid 2px white;
-    border-radius: 20px;
-    height: 40px;
 }
 
 .fire{
-    color: white;
     background-color: #ff3f34;
-    border: solid 3px white;
-    border-radius: 20px;
-    height: 40px;
-    box-shadow: 3px 3px 3px #777;
 }
 
 .water{
-    color: white;
     background-color: #1e90ff;
-    border: solid 3px white;
-    border-radius: 20px;
-    height: 40px;
-    box-shadow: 3px 3px 3px #777;
 }
 
 .fighting{
-    color: white;
     background-color: #b24e1c;
-    border: solid 3px white;
-    border-radius: 20px;
-    height: 40px;
-    box-shadow: 3px 3px 3px #777;
 }
 
 .flying{
-    color: white;
     background-color: #71a0c8;
-    border: solid 3px white;
-    border-radius: 20px;
-    height: 40px;
-    box-shadow: 3px 3px 3px #777;
 }
 
 .poison{
-    color: white;
     background-color: #8d619a;
-    border: solid 3px white;
-    border-radius: 20px;
-    height: 40px;
-    box-shadow: 3px 3px 3px #777;
 }
 
 .ground{
-    color: white;
     background-color: #ecd06f;
-    border: solid 3px white;
-    border-radius: 20px;
-    height: 40px;
-    box-shadow: 3px 3px 3px #777;
 }
 
 .rock{
-    color: white;
     background-color: #cebf8d;
-    border: solid 3px white;
-    border-radius: 20px;
-    height: 40px;
-    box-shadow: 3px 3px 3px #777;
 }
 
 .bug{
-    color: white;
     background-color: #a5d152;
-    border: solid 3px white;
-    border-radius: 20px;
-    height: 40px;
-    box-shadow: 3px 3px 3px #777;
 }
 
 .ghost{
-    color: white;
     background-color: #5f26ad;
-    border: solid 3px white;
-    border-radius: 20px;
-    height: 40px;
-    box-shadow: 3px 3px 3px #777;
 }
 
 .electric{
-    color: white;
     background-color: #ffea6b;
-    border: solid 3px white;
-    border-radius: 20px;
-    height: 40px;
-    box-shadow: 3px 3px 3px #777;
 }
 
 .psychic{
-    color: white;
     background-color: #ff58a5;
-    border: solid 3px white;
-    border-radius: 20px;
-    height: 40px;
-    box-shadow: 3px 3px 3px #777;
 }
 
 .ice{
-    color: white;
     background-color: #aef6ff;
-    border: solid 3px white;
-    border-radius: 20px;
-    height: 40px;
-    box-shadow: 3px 3px 3px #777;
 }
 
 .dragon{
-    color: white;
     background-color: #5500ce;
-    border: solid 3px white;
-    border-radius: 20px;
-    height: 40px;
-    box-shadow: 3px 3px 3px #777;
 }
 
 .dark{
-    color: white;
     background-color: #303030;
-    border: solid 3px white;
-    border-radius: 20px;
-    height: 40px;
-    box-shadow: 3px 3px 3px #777;
 }
 
 .steel{
-    color: white;
     background-color: #a3c2eb;
-    border: solid 3px white;
-    border-radius: 20px;
-    height: 40px;
-    box-shadow: 3px 3px 3px #777;
 }
 
 .fairy{
-    color: white;
     background-color: #ff9ff3;
-    border: solid 3px white;
-    border-radius: 20px;
-    height: 40px;
-    box-shadow: 3px 3px 3px #777;
 }

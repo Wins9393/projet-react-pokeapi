@@ -60,7 +60,7 @@ const PokemonDetails = ({
         </div>
         <div className="pokemonContainer">
           <div className="pokemonRowWrapper">
-            <Row gutter={[16, 8]} justify="center" align="middle">
+            <Row gutter={[32, 32]} justify="center" align="middle">
               <Divider className="divider">
                 <p>General</p>
               </Divider>
@@ -76,7 +76,7 @@ const PokemonDetails = ({
                   </div>
                 </div>
               </Col>
-              <Col className="container containerColumn" span={4}>
+              <Col className="container typeHeightWeightColumn" span={4}>
                 <div className="container containerColor">
                   <h3 className="subTitleWhite">Type</h3>
                 </div>
@@ -87,12 +87,24 @@ const PokemonDetails = ({
                   <h3 className="subTitleWhite">Weight</h3>
                 </div>
               </Col>
-              <Col span={4}>
-                <div className="mb8">
-                  <p className={`${poke.types[0].type.name} type`}>
-                    {capitalize(poke.types[0].type.name)}
-                  </p>
-                </div>
+              <Col span={4} className="container typeHeightWeightValueColumn">
+                {poke.types[1] ? (
+                  <div className="mb8 twoTypes">
+                    <p className={`${poke.types[0].type.name} type`}>
+                      {capitalize(poke.types[0].type.name)}
+                    </p>
+                    <p className={`${poke.types[1].type.name} type`}>
+                      {capitalize(poke.types[1].type.name)}
+                    </p>
+                  </div>
+                ) : (
+                  <div className="mb8 oneType">
+                    <p className={`${poke.types[0].type.name} type`}>
+                      {capitalize(poke.types[0].type.name)}
+                    </p>
+                  </div>
+                )}
+
                 <div className="mb8 height">
                   <p>{poke.height * 10} cm</p>
                 </div>
@@ -102,7 +114,7 @@ const PokemonDetails = ({
               </Col>
 
               <Col span={8}>
-                <div className="container containerColumn containerMoves">
+                <div className="container containerMoves">
                   <div className="container containerColor">
                     <h3 className="subTitleWhite">Moves</h3>
                   </div>
@@ -117,7 +129,7 @@ const PokemonDetails = ({
                 <p>Statistics</p>
               </Divider>
 
-              <Col span={3}>
+              <Col span={4}>
                 <div className="container">
                   <h3 className="subTitle">HP:</h3>
                 </div>
