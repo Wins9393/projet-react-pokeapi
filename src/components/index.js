@@ -6,4 +6,4 @@ import PokemonDetails from './PokemonDetails'
 import FilterByType from './FilterByType'
 import Favorite from './Favorite'
 
-export {Favorite, Filter, Header, Pokemon, PokemonList, PokemonDetails, FilterByType}
+export { Favorite, Filter, Header, Pokemon, PokemonList, PokemonDetails, FilterByType}

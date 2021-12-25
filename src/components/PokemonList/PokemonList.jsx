@@ -28,7 +28,7 @@ const PokemonList = ({ pokemonList = [] }) => {
         >
           <Loader
             type="BallTriangle"
-            color="#70a1ff"
+            color="#fbc531"
             height={120}
             width={120}
             visible={loading}
@@ -56,7 +56,7 @@ const PokemonList = ({ pokemonList = [] }) => {
       >
         <Loader
           type="BallTriangle"
-          color="#70a1ff"
+          color="#fbc531"
           height={120}
           width={120}
           visible={loading}

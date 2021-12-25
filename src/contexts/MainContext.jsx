@@ -20,11 +20,11 @@ const Provider = ({ children }) => {
 
   useEffect(() => {
     fetchPokeapi();
-    if (loading) {
-      setTimeout(() => {
-        setLoading(false);
-      }, 1000);
-    }
+    // if (loading) {
+    //   setTimeout(() => {
+    //     setLoading(false);
+    //   }, 1000);
+    // }
   }, []);
 
   const fetchPokeapi = async () => {
@@ -36,6 +36,12 @@ const Provider = ({ children }) => {
 
       setPokeapi(data.results);
       setFiltered(data.results);
+
+      if (loading) {
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
+      }
 
       // Tentative de synchroniser l'url avec le input
       // matchParamsWithInput();
@@ -111,7 +117,7 @@ const Provider = ({ children }) => {
       >
         <Loader
           type="BallTriangle"
-          color="#70a1ff"
+          color="#fbc531"
           height={120}
           width={120}
           visible={loading}

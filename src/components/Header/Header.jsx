@@ -14,6 +14,9 @@ const Header = () => {
       <Menu.Item key="favorites">
         <Link to="/favorites">Favorites</Link>
       </Menu.Item>
+      <Menu.Item key="contact">
+        <Link to="/contact">Contact</Link>
+      </Menu.Item>
     </Menu>
   );
 };

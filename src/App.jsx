@@ -7,9 +7,6 @@ import { Layout } from "antd";
 const { Header, Sider, Content } = Layout;
 
 const App = () => {
-  // Tentative de synchroniser l'url avec le input
-  // const { match } = useContext(MainContext);
-
   return (
     <Layout>
       <div className="App">
@@ -25,6 +22,7 @@ const App = () => {
               <Route path="/pokemon/:slug" element={<Pokemon />} />
               <Route path="/type" element={<PokemonsByType />} />
               <Route path="/favorites" element={<Favorites />} />
+              {/* <Route path="/contact" element={<Contact />} /> */}
             </Routes>
           </Content>
         </Layout>

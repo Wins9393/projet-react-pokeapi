@@ -10,7 +10,7 @@ const Pokemon = ({ id, name }) => {
   if (id) {
     return (
       <>
-        <div className="pokemonNameContainer">
+        <div className="pokemonNameContainer hover">
           <Link to={`/pokemon/${name}`}>
             <div className="pokemonNameBorder">
               <div className="pokemonNameBorder2">

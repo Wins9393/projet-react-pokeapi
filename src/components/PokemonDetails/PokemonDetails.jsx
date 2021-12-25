@@ -1,23 +1,18 @@
-import { Avatar, Row, Col, Divider, Button } from "antd";
+import { Avatar, Row, Col, Divider, Button, Image } from "antd";
 import { StarFilled } from "@ant-design/icons";
 import { ToastContainer } from "react-toastify";
 import Loader from "react-loader-spinner";
 
 import "./PokemonDetails.css";
 
-// import { useState } from "react";
-
 const PokemonDetails = ({
   slug,
   pokemonDetails,
   capitalize,
   addToFavorites,
-  isFavorite,
   loading,
 }) => {
   const poke = pokemonDetails.pokemon;
-
-  console.log(poke);
 
   if (loading) {
     return (
@@ -32,7 +27,7 @@ const PokemonDetails = ({
       >
         <Loader
           type="BallTriangle"
-          color="#70a1ff"
+          color="#fbc531"
           height={120}
           width={120}
           visible={loading}
@@ -42,6 +37,8 @@ const PokemonDetails = ({
   } else if (poke.length < 1) {
     return <div>Error !</div>;
   } else {
+    console.log(poke.sprites.other.dream_world.front_default);
+
     return (
       <>
         <div className="pokemonNameContainer">
@@ -70,16 +67,6 @@ const PokemonDetails = ({
                   icon={<StarFilled id="star" />}
                   onClick={() => addToFavorites(poke)}
                 />
-                {/* Test pour toggle l'étoile au click
-                    Mais le toggle changeait le state de tous les pokémons
-
-                  <div onClick={() => addToFavorites(poke)}>
-                  {isFavorite ? (
-                    <StarFilled id="star" />
-                  ) : (
-                    <StarOutlined id="star" />
-                  )}
-                </div> */}
               </div>
             </div>
           </div>
@@ -94,10 +81,11 @@ const PokemonDetails = ({
               <Col span={8}>
                 <div className="imgContainer">
                   <div className="imgWrapper">
-                    <Avatar
-                      src={poke.sprites.front_default}
+                    <Image
+                      src={poke.sprites.other.dream_world.front_default}
                       alt={slug}
-                      size={250}
+                      size={100}
+                      preview={false}
                     />
                   </div>
                 </div>

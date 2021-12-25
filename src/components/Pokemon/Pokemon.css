@@ -1,3 +1,7 @@
 .pokeTitle{
     margin: 0 !important;
 }
+
+.hover:hover{
+    margin-left: -10px;
+}
