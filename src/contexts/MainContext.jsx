@@ -1,32 +1,27 @@
 import { createContext, useState, useEffect } from "react";
 import { useMatch } from "react-router-dom";
 import { toast } from "react-toastify";
+import Loader from "react-loader-spinner";
+
 import "react-toastify/dist/ReactToastify.css";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const MainContext = createContext({});
 
 const Provider = ({ children }) => {
   const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [pokeapi, setPokeapi] = useState([]);
-  const [pokemonDetails, setPokemonDetails] = useState({
-    pokemon: [],
-    isFetching: false,
-  });
   const [filtered, setFiltered] = useState([]);
   const [filteredByType, setFilteredByType] = useState([]);
   const [inputSearched, setInputSearched] = useState();
   const [isFavorite, setIsFavorite] = useState();
-
-  // const [favorites, setFavorites] = useState({ ...localStorage })
+  const [loading, setLoading] = useState(true);
+  const [pokeapi, setPokeapi] = useState([]);
 
   let match = useMatch("/filter/:slug");
 
   useEffect(() => {
     fetchPokeapi();
   }, []);
-
-  // console.log(pokeapi);
 
   const fetchPokeapi = async () => {
     try {
@@ -35,27 +30,16 @@ const Provider = ({ children }) => {
       );
       const data = await response.json();
 
-      setLoading(false);
       setPokeapi(data.results);
       setFiltered(data.results);
+
+      setTimeout(() => {
+        setLoading(false);
+      }, 400);
       // Tentative de synchroniser l'url avec le input
       // matchParamsWithInput();
     } catch (err) {
       setError(true);
-      throw err;
-    }
-  };
-
-  const fetchPokemonDetails = async (name, active) => {
-    try {
-      setPokemonDetails({ pokemon: pokemonDetails.pokemon, isFetching: true });
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
-      const data = await response.json();
-      if (active) {
-        setPokemonDetails({ pokemon: data, isFetching: false });
-        console.log(pokemonDetails.pokemon);
-      }
-    } catch (err) {
       throw err;
     }
   };
@@ -90,6 +74,10 @@ const Provider = ({ children }) => {
       const data = await response.json();
 
       setFilteredByType(data.pokemon);
+
+      // Tentative de mettre les données reçu par l'api /pokemons/:type
+      // Dans le même format que celles reçu par l'api /pokemons/:name (sans succès)
+
       // const tmp = [];
 
       // filteredByType.map((object) => tmp.push(object.pokemon));
@@ -97,8 +85,6 @@ const Provider = ({ children }) => {
     } catch (err) {
       throw err;
     }
-
-    console.log(filteredByType);
   };
 
   const addToFavorites = (poke) => {
@@ -112,14 +98,6 @@ const Provider = ({ children }) => {
       toast.success(`${poke.name} has been added to the favorites !`);
     }
   };
-
-  // const toggleFavorite = (storage) => {
-  //   if (localStorage.getItem(poke.name)) {
-  //     setIsFavorite(true);
-  //   } else {
-  //     setIsFavorite(false);
-  //   }
-  // };
 
   const capitalize = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -142,16 +120,31 @@ const Provider = ({ children }) => {
   //   }
   // };
 
+  if (loading) {
+    return (
+      <div
+        style={{
+          width: "100%",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Loader
+          type="BallTriangle"
+          color="#70a1ff"
+          height={120}
+          width={120}
+          visible={loading}
+        />
+      </div>
+    );
+  }
+
   if (error) {
     return <div>Sorry, there is an error</div>;
   }
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-  // console.log(pokeapi);
-  // console.log(filtered);
-  // console.log(filteredByType);
 
   return (
     <MainContext.Provider
@@ -159,16 +152,15 @@ const Provider = ({ children }) => {
         capitalize,
         isFavorite,
         pokeapi,
-        pokemonDetails,
         handleFilter,
         handleFilterByType,
-        fetchPokemonDetails,
         filtered,
         filteredByType,
         inputSearched,
         match,
         onSearch,
         addToFavorites,
+        loading,
       }}
     >
       {children}

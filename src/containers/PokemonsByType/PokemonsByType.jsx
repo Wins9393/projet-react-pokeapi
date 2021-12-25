@@ -1,10 +1,9 @@
 import { PokemonList, FilterByType } from "../../components";
 import MainContext from "../../contexts";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const PokemonsByType = () => {
-  const { filteredByType, setFilteredByType, handleFilterByType } =
-    useContext(MainContext);
+  const { filteredByType, handleFilterByType } = useContext(MainContext);
 
   useEffect(() => {
     handleFilterByType();

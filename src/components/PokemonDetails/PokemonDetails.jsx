@@ -1,7 +1,9 @@
 import { Avatar, Row, Col, Divider, Button } from "antd";
 import { StarFilled } from "@ant-design/icons";
-import "./PokemonDetails.css";
 import { ToastContainer } from "react-toastify";
+import Loader from "react-loader-spinner";
+
+import "./PokemonDetails.css";
 
 // import { useState } from "react";
 
@@ -11,12 +13,33 @@ const PokemonDetails = ({
   capitalize,
   addToFavorites,
   isFavorite,
+  loading,
 }) => {
   const poke = pokemonDetails.pokemon;
 
   console.log(poke);
 
-  if (poke.length < 1) {
+  if (loading) {
+    return (
+      <div
+        style={{
+          width: "100%",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Loader
+          type="BallTriangle"
+          color="#70a1ff"
+          height={120}
+          width={120}
+          visible={loading}
+        />
+      </div>
+    );
+  } else if (poke.length < 1) {
     return <div>Error !</div>;
   } else {
     return (
