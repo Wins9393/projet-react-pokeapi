@@ -2,10 +2,16 @@
 
 .App {
   text-align: center;
-  font-family: 'Cabin', sans-serif;
-  background: no-repeat fixed center/100% url("/public/fond-bleu-pokemon.jpg");
+  font-family: 'Cabin', sans-serif !important;
 }
 
+.header{
+  background-color: #fbc531 !important;
+  color: white !important;
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+}
 
 .App-header {
   background-color: #282c34;
@@ -16,6 +22,17 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.content{
+  margin-top: 64px;
+  min-height: 95vh !important;
+  background: no-repeat fixed center/200% url("/public/fond-bleu-pokemon2.jpg");
+
+}
+
+.sider{
+  min-width: 25% !important;
 }
 
 .App-link {

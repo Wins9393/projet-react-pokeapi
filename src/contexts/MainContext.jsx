@@ -11,7 +11,6 @@ const MainContext = createContext({});
 const Provider = ({ children }) => {
   const [error, setError] = useState(false);
   const [filtered, setFiltered] = useState([]);
-  const [filteredByType, setFilteredByType] = useState([]);
   const [inputSearched, setInputSearched] = useState();
   const [isFavorite, setIsFavorite] = useState();
   const [loading, setLoading] = useState(true);
@@ -21,6 +20,11 @@ const Provider = ({ children }) => {
 
   useEffect(() => {
     fetchPokeapi();
+    if (loading) {
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+    }
   }, []);
 
   const fetchPokeapi = async () => {
@@ -33,9 +37,6 @@ const Provider = ({ children }) => {
       setPokeapi(data.results);
       setFiltered(data.results);
 
-      setTimeout(() => {
-        setLoading(false);
-      }, 400);
       // Tentative de synchroniser l'url avec le input
       // matchParamsWithInput();
     } catch (err) {
@@ -62,29 +63,6 @@ const Provider = ({ children }) => {
       pokemon.name.toLowerCase().includes(value)
     );
     setFiltered(searched);
-  };
-
-  const handleFilterByType = async (type) => {
-    if (!type) {
-      setFilteredByType({ type: null });
-      return;
-    }
-    try {
-      const response = await fetch(`https://pokeapi.co/api/v2/type/${type}`);
-      const data = await response.json();
-
-      setFilteredByType(data.pokemon);
-
-      // Tentative de mettre les données reçu par l'api /pokemons/:type
-      // Dans le même format que celles reçu par l'api /pokemons/:name (sans succès)
-
-      // const tmp = [];
-
-      // filteredByType.map((object) => tmp.push(object.pokemon));
-      // setFilteredByType(tmp);
-    } catch (err) {
-      throw err;
-    }
   };
 
   const addToFavorites = (poke) => {
@@ -153,9 +131,7 @@ const Provider = ({ children }) => {
         isFavorite,
         pokeapi,
         handleFilter,
-        handleFilterByType,
         filtered,
-        filteredByType,
         inputSearched,
         match,
         onSearch,

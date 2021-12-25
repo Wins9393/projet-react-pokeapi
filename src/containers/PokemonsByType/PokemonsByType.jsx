@@ -1,19 +1,45 @@
 import { PokemonList, FilterByType } from "../../components";
-import MainContext from "../../contexts";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const PokemonsByType = () => {
-  const { filteredByType, handleFilterByType } = useContext(MainContext);
+  const [filteredByType, setFilteredByType] = useState();
 
   useEffect(() => {
     handleFilterByType();
-    console.log(filteredByType);
   }, []);
+
+  const handleFilterByType = async (type) => {
+    if (!type) {
+      setFilteredByType({ type: null });
+      return;
+    }
+    try {
+      const response = await fetch(`https://pokeapi.co/api/v2/type/${type}`);
+      const data = await response.json();
+
+      setFilteredByType(data.pokemon);
+
+      // Tentative de mettre les données reçu par l'api /pokemons/:type
+      // Dans le même format que celles reçu par l'api /pokemons/:name (sans succès)
+
+      // const tmp = [];
+
+      // filteredByType.map((object) => tmp.push(object.pokemon));
+      // setFilteredByType(tmp);
+    } catch (err) {
+      throw err;
+    }
+  };
 
   return (
     <>
-      <FilterByType handleFilterByType={handleFilterByType}></FilterByType>
-      <PokemonList pokemonList={filteredByType}></PokemonList>
+      <div className="searchForm">
+        <h2 className="pageTitle">Search Pokemon by type</h2>
+        <FilterByType handleFilterByType={handleFilterByType}></FilterByType>
+      </div>
+      <div className="containerList">
+        <PokemonList pokemonList={filteredByType}></PokemonList>
+      </div>
     </>
   );
 };

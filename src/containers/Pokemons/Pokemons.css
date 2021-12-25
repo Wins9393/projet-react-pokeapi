@@ -1,0 +1,16 @@
+.searchForm{
+    position: sticky;
+    top: 64px;
+    width: 100%;
+    background-color: #353b48;
+    padding: 32px;
+    z-index: 2;
+}
+
+.pageTitle{
+    color: white !important;
+}
+
+.containerList{
+    padding: 32px;
+}

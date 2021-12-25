@@ -52,7 +52,7 @@ h3{
 }
 
 .pokemonRowWrapper{
-    width: 80vw;
+    width: 90%;
     border: solid 0.5px #333;
     border-radius: 10px;
     padding: 24px;
@@ -116,6 +116,7 @@ h3{
     flex-direction: column;
     margin-left: -30px;
     margin-right: 30px;
+    margin-bottom: 12px;
 }
 
 .twoTypes, .oneType{

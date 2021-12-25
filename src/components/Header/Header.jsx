@@ -4,9 +4,9 @@ import "./Header.css";
 
 const Header = () => {
   return (
-    <Menu mode="horizontal">
+    <Menu mode="horizontal" className="header">
       <Menu.Item key="all pokemon">
-        <Link to="/">All Pokemon</Link>
+        <Link to="/">All Pokemons</Link>
       </Menu.Item>
       <Menu.Item key="by type">
         <Link to="/type">By Type</Link>
