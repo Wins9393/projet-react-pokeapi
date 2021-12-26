@@ -1,3 +1,4 @@
+import ContactForm from './ContactForm'
 import Filter from './Filter'
 import Header from './Header'
 import Pokemon from './Pokemon'
@@ -6,4 +7,4 @@ import PokemonDetails from './PokemonDetails'
 import FilterByType from './FilterByType'
 import Favorite from './Favorite'
 
-export { Favorite, Filter, Header, Pokemon, PokemonList, PokemonDetails, FilterByType}
+export { ContactForm, Favorite, Filter, Header, Pokemon, PokemonList, PokemonDetails, FilterByType}

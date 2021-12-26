@@ -37,7 +37,7 @@ const PokemonDetails = ({
   } else if (poke.length < 1) {
     return <div>Error !</div>;
   } else {
-    console.log(poke.sprites.other.dream_world.front_default);
+    console.log(poke);
 
     return (
       <>
@@ -82,7 +82,8 @@ const PokemonDetails = ({
                 <div className="imgContainer">
                   <div className="imgWrapper">
                     <Image
-                      src={poke.sprites.other.dream_world.front_default}
+                      // src={poke.sprites.other.dream_world.front_default}
+                      src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${poke.id}.png`}
                       alt={slug}
                       size={100}
                       preview={false}
