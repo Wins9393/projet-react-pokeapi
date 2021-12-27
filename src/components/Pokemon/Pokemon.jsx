@@ -1,18 +1,27 @@
 import { Link } from "react-router-dom";
 import "./Pokemon.css";
 import Avatar from "antd/lib/avatar/avatar";
-import { useContext } from "react/cjs/react.development";
+import { useContext, useState } from "react/cjs/react.development";
 import MainContext from "../../contexts";
 
 const Pokemon = ({ id, name }) => {
-  const { capitalize } = useContext(MainContext);
+  const { capitalize, handleIdChange } = useContext(MainContext);
+  const [mouseEnter, setMouseEnter] = useState(false);
+
+  if (mouseEnter) {
+    handleIdChange(id);
+  }
 
   if (id) {
     return (
       <>
-        <div className="pokemonNameContainer hover">
-          <Link to={`/pokemon/${name}`}>
-            <div className="pokemonNameBorder">
+        <div className="pokemonNameContainer">
+          <Link
+            to={`/pokemon/${name}`}
+            onMouseEnter={() => setMouseEnter(true)}
+            onMouseOver={() => setMouseEnter(false)}
+          >
+            <div className="pokemonNameBorder hover">
               <div className="pokemonNameBorder2">
                 <div className="pokemonNameWrapper">
                   <img

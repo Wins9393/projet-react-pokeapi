@@ -15,6 +15,7 @@ const Provider = ({ children }) => {
   const [isFavorite, setIsFavorite] = useState();
   const [loading, setLoading] = useState(true);
   const [pokeapi, setPokeapi] = useState([]);
+  const [pokePreview, setPokePreview] = useState(150);
 
   let match = useMatch("/filter/:slug");
 
@@ -87,6 +88,10 @@ const Provider = ({ children }) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
+  const handleIdChange = (id) => {
+    setPokePreview(id);
+  };
+
   // Tentative de synchroniser l'url avec le input
 
   // const matchParamsWithInput = () => {
@@ -136,6 +141,7 @@ const Provider = ({ children }) => {
         capitalize,
         isFavorite,
         pokeapi,
+        pokePreview,
         handleFilter,
         filtered,
         inputSearched,
@@ -143,6 +149,7 @@ const Provider = ({ children }) => {
         onSearch,
         addToFavorites,
         loading,
+        handleIdChange,
       }}
     >
       {children}

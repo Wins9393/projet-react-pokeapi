@@ -1,12 +1,22 @@
 import "./App.css";
 import { Header as HeaderPerso } from "./components/";
-import { Pokemons, Pokemon, PokemonsByType, Favorites } from "./containers/";
+import {
+  Pokemons,
+  Pokemon,
+  PokemonsByType,
+  Favorites,
+  PreviewPokemonSider,
+} from "./containers/";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { Layout } from "antd";
+import { useContext } from "react/cjs/react.development";
+import MainContext from "./contexts";
+
 const { Header, Sider, Content } = Layout;
 
 const App = () => {
+  const { pokeapi } = useContext(MainContext);
   return (
     <Layout>
       <div className="App">
@@ -14,7 +24,9 @@ const App = () => {
           <HeaderPerso />
         </Header>
         <Layout>
-          <Sider className="sider"></Sider>
+          <Sider className="sider">
+            <PreviewPokemonSider poke={pokeapi} />
+          </Sider>
           <Content className="content">
             <Routes>
               <Route path="/" element={<Pokemons />} />
