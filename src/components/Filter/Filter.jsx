@@ -8,7 +8,6 @@ const Filter = ({ handleFilter }) => {
   const { match, onSearch } = useContext(MainContext);
 
   if (match) {
-    console.log(match.params.slug);
   }
   return (
     <>
@@ -20,7 +19,6 @@ const Filter = ({ handleFilter }) => {
           enterButton
         />
       </form>
-      {/* <p>{inputSearched}</p> */}
     </>
   );
 };

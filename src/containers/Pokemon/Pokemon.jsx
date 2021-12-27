@@ -29,13 +29,9 @@ const Pokemon = () => {
     }
   };
 
-  console.log(slug);
-
   useEffect(() => {
     fetchPokemonDetails(slug);
   }, []);
-
-  console.log(pokemonDetails);
 
   return (
     <PokemonDetails

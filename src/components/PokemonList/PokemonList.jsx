@@ -2,7 +2,7 @@ import { Favorite } from "..";
 import Loader from "react-loader-spinner";
 import MainContext from "../../contexts";
 import Pokemon from "../Pokemon";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 const PokemonList = ({ pokemonList = [] }) => {

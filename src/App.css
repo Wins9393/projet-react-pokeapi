@@ -27,7 +27,7 @@
 .content{
   margin-top: 64px;
   min-height: 95vh !important;
-  background: no-repeat fixed center/200% url("/public/fond-bleu-pokemon2.jpg");
+  background: no-repeat fixed center/200% url("/public/assets/fond-bleu-pokemon2.jpg");
 
 }
 

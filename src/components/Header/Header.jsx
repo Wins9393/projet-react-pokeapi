@@ -6,15 +6,6 @@ import "./Header.css";
 
 const Header = () => {
   const [visible, setVisible] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const handleSubmit = () => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setVisible(false);
-    }, 1000);
-  };
   return (
     <Menu mode="horizontal" className="header">
       <Menu.Item key="all pokemon">
@@ -32,6 +23,7 @@ const Header = () => {
         </Button>
         <Modal
           title="Contact form"
+          closable={false}
           centered
           visible={visible}
           width={720}

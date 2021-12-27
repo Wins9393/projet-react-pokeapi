@@ -22,7 +22,6 @@ const App = () => {
               <Route path="/pokemon/:slug" element={<Pokemon />} />
               <Route path="/type" element={<PokemonsByType />} />
               <Route path="/favorites" element={<Favorites />} />
-              {/* <Route path="/contact" element={<Contact />} /> */}
             </Routes>
           </Content>
         </Layout>

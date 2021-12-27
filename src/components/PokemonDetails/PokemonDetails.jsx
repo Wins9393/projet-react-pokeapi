@@ -37,8 +37,6 @@ const PokemonDetails = ({
   } else if (poke.length < 1) {
     return <div>Error !</div>;
   } else {
-    console.log(poke);
-
     return (
       <>
         <div className="pokemonNameContainer">

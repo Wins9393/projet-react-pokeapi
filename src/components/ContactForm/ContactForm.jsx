@@ -1,6 +1,5 @@
-import { Input, Button } from "antd";
+import { Input } from "antd";
 import { Formik } from "formik";
-import { Link } from "react-router-dom";
 
 import { UserOutlined, MailOutlined } from "@ant-design/icons";
 
@@ -31,7 +30,6 @@ const ContactForm = () => {
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
-          console.log(values);
           window.location = `mailto:brechairevincent@gmail.com?subject=Merci pour ton travail Vincent :)&body=${values.message}`;
           setSubmitting(false);
         }}
