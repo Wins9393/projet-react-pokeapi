@@ -2,6 +2,8 @@ import { Avatar, Row, Col, Divider, Button, Image } from "antd";
 import { StarFilled } from "@ant-design/icons";
 import { ToastContainer } from "react-toastify";
 import Loader from "react-loader-spinner";
+import { useContext, useEffect } from "react";
+import MainContext from "../../contexts";
 
 import "./PokemonDetails.css";
 
@@ -12,7 +14,12 @@ const PokemonDetails = ({
   addToFavorites,
   loading,
 }) => {
+  const { handleHasSider } = useContext(MainContext);
   const poke = pokemonDetails.pokemon;
+
+  useEffect(() => {
+    handleHasSider(false);
+  }, []);
 
   if (loading) {
     return (

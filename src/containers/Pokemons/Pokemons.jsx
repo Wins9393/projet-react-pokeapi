@@ -1,10 +1,16 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { PokemonList, Filter } from "../../components";
 import MainContext from "../../contexts/";
 import "./Pokemons.css";
 
 const Pokemons = () => {
-  const { filtered, handleFilter, inputSearched } = useContext(MainContext);
+  const { filtered, handleFilter, handleHasSider, inputSearched } =
+    useContext(MainContext);
+
+  useEffect(() => {
+    handleHasSider(true);
+  }, []);
+
   return (
     <>
       <div className="searchForm">

@@ -16,30 +16,53 @@ import MainContext from "./contexts";
 const { Header, Sider, Content } = Layout;
 
 const App = () => {
-  const { pokeapi } = useContext(MainContext);
-  return (
-    <Layout>
-      <div className="App">
-        <Header className="header">
-          <HeaderPerso />
-        </Header>
-        <Layout>
-          <Sider className="sider">
-            <PreviewPokemonSider poke={pokeapi} />
-          </Sider>
-          <Content className="content">
-            <Routes>
-              <Route path="/" element={<Pokemons />} />
-              <Route path="/filter/:slug" element={<Pokemons />} />
-              <Route path="/pokemon/:slug" element={<Pokemon />} />
-              <Route path="/type" element={<PokemonsByType />} />
-              <Route path="/favorites" element={<Favorites />} />
-            </Routes>
-          </Content>
-        </Layout>
-      </div>
-    </Layout>
-  );
+  const { pokeapi, hasSider } = useContext(MainContext);
+  if (hasSider) {
+    return (
+      <Layout>
+        <div className="App">
+          <Header className="header">
+            <HeaderPerso />
+          </Header>
+          <Layout>
+            <Sider className="sider">
+              <PreviewPokemonSider poke={pokeapi} />
+            </Sider>
+            <Content className="content">
+              <Routes>
+                <Route path="/" element={<Pokemons />} />
+                <Route path="/filter/:slug" element={<Pokemons />} />
+                <Route path="/pokemon/:slug" element={<Pokemon />} />
+                <Route path="/type" element={<PokemonsByType />} />
+                <Route path="/favorites" element={<Favorites />} />
+              </Routes>
+            </Content>
+          </Layout>
+        </div>
+      </Layout>
+    );
+  } else {
+    return (
+      <Layout>
+        <div className="App">
+          <Header className="header">
+            <HeaderPerso />
+          </Header>
+          <Layout>
+            <Content className="content">
+              <Routes>
+                <Route path="/" element={<Pokemons />} />
+                <Route path="/filter/:slug" element={<Pokemons />} />
+                <Route path="/pokemon/:slug" element={<Pokemon />} />
+                <Route path="/type" element={<PokemonsByType />} />
+                <Route path="/favorites" element={<Favorites />} />
+              </Routes>
+            </Content>
+          </Layout>
+        </div>
+      </Layout>
+    );
+  }
 };
 
 export default App;

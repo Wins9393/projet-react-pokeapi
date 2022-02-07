@@ -1,11 +1,14 @@
 import { PokemonList, FilterByType } from "../../components";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import MainContext from "../../contexts";
 
 const PokemonsByType = () => {
+  const { handleHasSider } = useContext(MainContext);
   const [filteredByType, setFilteredByType] = useState();
 
   useEffect(() => {
     handleFilterByType();
+    handleHasSider(true);
   }, []);
 
   const handleFilterByType = async (type) => {

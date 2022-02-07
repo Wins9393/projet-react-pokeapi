@@ -13,6 +13,10 @@ const Pokemon = () => {
   const { slug } = useParams("");
   const { addToFavorites, isFavorite, capitalize } = useContext(MainContext);
 
+  useEffect(() => {
+    fetchPokemonDetails(slug);
+  }, []);
+
   const fetchPokemonDetails = async (name) => {
     try {
       setPokemonDetails({ pokemon: pokemonDetails.pokemon, isFetching: true });
@@ -28,10 +32,6 @@ const Pokemon = () => {
       throw err;
     }
   };
-
-  useEffect(() => {
-    fetchPokemonDetails(slug);
-  }, []);
 
   return (
     <PokemonDetails

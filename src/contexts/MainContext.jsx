@@ -16,6 +16,7 @@ const Provider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [pokeapi, setPokeapi] = useState([]);
   const [pokePreview, setPokePreview] = useState(150);
+  const [hasSider, setHasSider] = useState(true);
 
   let match = useMatch("/filter/:slug");
 
@@ -92,6 +93,10 @@ const Provider = ({ children }) => {
     setPokePreview(id);
   };
 
+  const handleHasSider = (bool) => {
+    setHasSider(bool);
+  };
+
   // Tentative de synchroniser l'url avec le input
 
   // const matchParamsWithInput = () => {
@@ -150,6 +155,8 @@ const Provider = ({ children }) => {
         addToFavorites,
         loading,
         handleIdChange,
+        hasSider,
+        handleHasSider,
       }}
     >
       {children}

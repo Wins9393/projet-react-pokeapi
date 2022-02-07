@@ -3,14 +3,17 @@ import "./Pokemon.css";
 import Avatar from "antd/lib/avatar/avatar";
 import { useContext, useState } from "react/cjs/react.development";
 import MainContext from "../../contexts";
+import { useEffect } from "react";
 
 const Pokemon = ({ id, name }) => {
   const { capitalize, handleIdChange } = useContext(MainContext);
   const [mouseEnter, setMouseEnter] = useState(false);
 
-  if (mouseEnter) {
-    handleIdChange(id);
-  }
+  useEffect(() => {
+    if (mouseEnter) {
+      handleIdChange(id);
+    }
+  });
 
   if (id) {
     return (
